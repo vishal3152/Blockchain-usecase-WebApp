@@ -1,0 +1,76 @@
+<head>
+    <title>Central Bank View</title>
+</head>
+<div class="row">
+        
+          <div>
+            
+        
+            <table class="striped indigo-text text-darken-2">
+              <thead>
+                <tr>
+                  <th>App Id</th>
+                  <th>Customer</th>
+                  <th>Bank(BIC)</th>
+                  <th>Loan Amount</th>
+                  <th>Currency</th>
+                  <th>Status</th>
+                  <th>Comments</th>
+        
+        
+                </tr>
+              </thead>
+        
+              <tbody class="pagination">
+                <tr *ngFor="let loan of assetDetails" > 
+                  <td>{{loan.applId}}</td>
+                  <td>{{loan.customer|slice:32}}</td>
+                  <td>{{loan.bank|slice:28}}</td>
+                  <td>{{loan.loanAmnt}}</td>
+                  <td>{{loan.currency}}</td>
+                  <td>{{loan.status}}</td>
+                  <td>
+                        {{loan.comments}}
+                  </td>
+                </tr>
+        
+              </tbody>
+            </table>
+        
+        
+        
+        
+            <!--<div class="col s6">
+              <div class="card deep-purple lighten-5">
+                <div class="card-content indigo-text text-darken-2">
+                  <span class="card-title">
+                    <span *ngIf="loan.action=='EMPLOYED'">Employee onboarded</span>
+                    <span *ngIf="loan.action=='RELEASED'">Employee released</span>
+                  </span>
+                  <table class="striped">
+                    <tr>
+                      <td>Employer:</td>
+                      <td>{{AssetHistoryItem.newEmployer}}</td>
+                    </tr>
+                    <tr>
+                      <td>Joining date:</td>
+                      <td>{{AssetHistoryItem.timestamp|slice:0:10}}</td>
+                    </tr>
+                    <tr>
+                      <td>Comments:</td>
+                      <td>{{AssetHistoryItem.comments}}</td>
+                    </tr>
+                    <tr>
+                      <td>Reason:</td>
+                      <td>{{AssetHistoryItem.reason}}</td>
+                    </tr>
+                  </table>
+                </div>
+        
+        
+              </div>
+            </div>-->
+        
+        
+          </div>
+        </div>

@@ -1,0 +1,272 @@
+<h5>&nbsp;&nbsp;&nbsp;&nbsp;Register customer</h5>
+<hr> &nbsp;&nbsp;&nbsp;&nbsp;*All fields are mandatory(Please mind validations)
+<br>
+<br>
+<div class="mdl-grid ">
+  <div class="mdl-cell mdl-cell--1-col"></div>
+  <div class="mdl-cell mdl-cell--3-col">
+    Purpose of relationship:
+  </div>
+  <div class="mdl-cell mdl-cell--2-col">
+    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+      <input type="radio" id="option-1" class="mdl-radio__button" name="options" value="BRWR" checked [(ngModel)]="prt.por">
+      <span class="mdl-radio__label">Borrower</span>
+    </label>
+  </div>
+  <div class="mdl-cell mdl-cell--3-col">
+    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
+      <input type="radio" id="option-2" class="mdl-radio__button" name="options" value="LNDR" [(ngModel)]="prt.por">
+      <span class="mdl-radio__label">Lender</span>
+    </label>
+  </div>
+</div>
+<div class="mdl-grid ">
+
+  <div class="mdl-cell mdl-cell--1-col" ng-readonly="all"></div>
+  <div class="mdl-cell mdl-cell--3-col">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="fName" [(ngModel)]="prt.fName">
+      <label class="mdl-textfield__label" for="fName">First name</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input id="uid" type="text" class="mdl-textfield__input" [(ngModel)]="prt.uid">
+      <label class="mdl-textfield__label" for="uid">*Unique Identification</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield">
+      <textarea class="mdl-textfield__input" type="text" rows="1" id="addr" [(ngModel)]="prt.addrLine"></textarea>
+      <label class="mdl-textfield__label" for="addr">Address lines...</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="pc" [(ngModel)]="prt.zip">
+      <label class="mdl-textfield__label" for="pc">Postal code</label>
+    </div>
+    <div *ngIf="prt.por=='LNDR'" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" pattern="[0-9]*" id="aNum" [(ngModel)]="prt.accountNumber">
+      <label class="mdl-textfield__label" for="aNum">Accountn number</label>
+      <span class="mdl-textfield__error">Digits only</span>
+    </div>
+  </div>
+  <div class="mdl-cell mdl-cell--3-col">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="lName" [(ngModel)]="prt.lName">
+      <label class="mdl-textfield__label" for="lName">Last name</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="ms" [(ngModel)]="prt.maritialStatus">
+      <label class="mdl-textfield__label" for="ms">Maritial status</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="city">
+      <label class="mdl-textfield__label" for="city">City</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="cc" [(ngModel)]="prt.countryCode">
+      <label class="mdl-textfield__label" for="cc">Country code</label>
+    </div>
+    <div *ngIf="prt.por=='LNDR'" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="aBal" [(ngModel)]="prt.accountBal">
+      <label class="mdl-textfield__label" for="aBal">Accountn Balance</label>
+      <span class="mdl-textfield__error">Digits only</span>
+    </div>
+  </div>
+  <div class="mdl-cell mdl-cell--3-col--1-offset">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input id="dob" type="text" class="mdl-textfield__input" [(ngModel)]="prt.dob">
+      <label class="mdl-textfield__label" for="dob">*Date of Birth(dd-mm-yyyy)</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="em" [(ngModel)]="prt.email">
+      <label class="mdl-textfield__label" for="em">Email</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="pr" [(ngModel)]="prt.province">
+      <label class="mdl-textfield__label" for="pr">Province</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" pattern="[0-9]*" id="phone" [(ngModel)]="prt.phone">
+      <label class="mdl-textfield__label" for="phone">Phone</label>
+      <span class="mdl-textfield__error">Digits only</span>
+    </div>
+  </div>
+
+
+</div>
+<div class="mdl-grid ">
+  <div class="mdl-cell mdl-cell--4-col">
+    <button *ngIf="this.status!=200" align="left" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" (click)="regParticipant()">
+      Submit
+    </button>
+    <button *ngIf="this.status==200" align="left" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" routerLink="/regAsset/{{this.prt.por}}/{{this.prt.uid}}">
+      <div *ngIf="this.prt.por=='BRWR'">Apply for Loan</div>
+      <div *ngIf="this.prt.por=='LNDR'">Submit Lending Proposal</div>
+    </button>
+
+  </div>
+
+</div>
+
+<!--<div class="row">
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s3">
+        <a class="active indigo-text text-darken-2">Personal Info</a>
+      </li>
+    </ul>
+
+    <div class="card  white">
+      <div class="card-content indigo-text text-darken-2">
+        <span class="card-title">
+        </span>
+        <hr> *All fields are mandatory(Please mind validations)
+        <br>
+        <br>
+        <div class="row indigo-text">
+
+          <div class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <select>
+                      <option value="" disabled selected>Choose your option</option>
+                      <option value="1">Option 1</option>
+                      <option value="2">Option 2</option>
+                      <option value="3">Option 3</option>
+                    </select>
+                    <label>Materialize Select</label>
+                  </div>
+            </div>
+            <div class="row">
+             
+            
+              <p>Specify purpose of relationship:<br>
+                <label for="first2" >
+                  <input id="first2" name="pType" type="radio" [(ngModel)]="por" >
+                  <span>Borrower</span>
+                </label>
+                <label for="first2">
+                  <input id="first2"  name="pType" type="radio" [(ngModel)]="por1">
+                  <span>Lender</span>
+                </label>
+              </p>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="first" type="text" class="validate" [(ngModel)]="emp.fname">
+                <label for="first_name">*First Name</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="last_name" type="text" class="validate" [(ngModel)]="emp.lname">
+                <label for="last_name">*Last Name</label>
+              </div>
+            </div>
+            <div class="row">
+
+              <div class="input-field col s6">
+                <input id="adhaar" type="text" class="validate" [(ngModel)]="emp.adhaar">
+                <label for="adhaar">*Unique Identification Id</label>
+              </div>
+              <div class="input-field col s6 indigo-text">
+                <input id="dob" type="text" class="validate" [(ngModel)]="emp.dob">
+                <label for="dob">*Date of Birth(dd-mm-yyy)</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="email" type="email" class="validate" [(ngModel)]="emp.email">
+                <label for="email">*M</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="phone" type="text" class="validate" [(ngModel)]="emp.phone">
+                <label for="phone">*Phone</label>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="income" type="text" class="validate" [(ngModel)]="emp.income">
+                  <label for="income">*Monthly income</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="liability" type="text" class="validate" [(ngModel)]="emp.liability">
+                  <label for="liability">*Monthly Liability</label>
+                </div>
+              </div>
+              <div class="row">
+
+
+                <div class="input-field col s6">
+                  <input id="address" type="text" class="validate" [(ngModel)]="emp.address">
+                  <label for="address">*Address</label>
+                </div>
+
+                <div class="input-field col s3">
+                  <input id="ZipCode" type="text" class="validate" [(ngModel)]="emp.zipCode">
+                  <label for="ZipCode">*Zipcode</label>
+                </div>
+              </div>
+
+
+            </div>
+            <div class="row">
+
+            </div>
+
+          </div>
+          <a class="waves-effect waves-light btn" (click)="addCustomer()">Save</a>
+          <div *ngIf="resp=='A'" class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue-only">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div>
+              <div class="gap-patch">
+                <div class="circle"></div>
+              </div>
+              <div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div id="test21" class="row indigo-text">
+          <div class="col s12">
+
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="laonamount" type="text" class="validate" [(ngModel)]="emp.amount">
+                <label for="laonamount">*Loan Amount</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="bank" type="text" class="validate" [(ngModel)]="emp.BIC">
+                <label for="bank">*Bank(BIC)</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="currency" type="text" class="validate" [(ngModel)]="emp.currency">
+                <label for="currency">*Currency</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="tenure" type="text" class="validate">
+                <label for="tenure">*Tenure(Days)</label>
+              </div>
+            </div>
+          </div>
+
+          <a class="waves-effect waves-light btn" (click)="submitAppl()">Apply for Loan</a>
+          <div *ngIf="resp=='AP'" class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue-only">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div>
+              <div class="gap-patch">
+                <div class="circle"></div>
+              </div>
+              <div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->

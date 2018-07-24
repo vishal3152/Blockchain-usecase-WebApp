@@ -1,0 +1,61 @@
+<h5>&nbsp;&nbsp;&nbsp;&nbsp; {{assetType}} for {{uid}}</h5>
+<hr> &nbsp;&nbsp;&nbsp;&nbsp;*All fields are mandatory(Please mind validations)
+<br>
+<br>
+
+<div *ngIf="por=='BRWR'" class="mdl-grid ">
+  <div class="mdl-cell mdl-cell--3-col"></div>
+  <div class="mdl-cell mdl-cell--3-col">
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="la" [(ngModel)]="asset.loanAmount">
+      <label class="mdl-textfield__label" for="la">Loan amount</label>
+    </div>
+  </div>
+  <div class="mdl-cell mdl-cell--3-col">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="lc" [(ngModel)]="asset.loanCurrency">
+      <label class="mdl-textfield__label" for="lc">Loan currency</label>
+    </div>
+  </div>
+
+</div>
+
+<div *ngIf="por=='LNDR'" class="mdl-grid ">
+
+  <div class="mdl-cell mdl-cell--1-col">
+
+  </div>
+  <div class="mdl-cell mdl-cell--3-col--2-offset">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="ca" [(ngModel)]="asset.commitAmount">
+      <label class="mdl-textfield__label" for="ca">Commit ammount</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="ir" [(ngModel)]="asset.intRate">
+      <label class="mdl-textfield__label" for="ir">Interest rate</label>
+    </div>
+  </div>
+  <div class="mdl-cell mdl-cell--3-col">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input id="ba" type="text" class="mdl-textfield__input" [(ngModel)]="asset.remAmount">
+      <label class="mdl-textfield__label" for="ba">Remaining amount</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="lc" [(ngModel)]="asset.loanCurrency">
+      <label class="mdl-textfield__label" for="lc">Loan currency</label>
+    </div>
+  </div>
+</div>
+<div class="mdl-grid ">
+  <div class="mdl-cell mdl-cell--8-col">
+      <div *ngIf="this.status==200">Application/Proposal Id generated : <b>{{key}}</b><br><br>
+          <button  align="left" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" routerLink="/welcome/">
+              Exit
+            </button> 
+      </div><br>
+    <button *ngIf="this.status!=200" align="left" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" (click)="addAsset()">
+      Submit
+    </button> 
+  </div>
+</div>

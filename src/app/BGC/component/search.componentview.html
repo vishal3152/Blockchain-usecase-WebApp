@@ -1,0 +1,21 @@
+<hr> &nbsp;&nbsp;&nbsp;&nbsp;*Enter idnetity number or application/proposal number
+<br>
+
+<div class="mdl-grid ">
+  <div class="mdl-cell mdl-cell--5-col">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="key" [(ngModel)]="uid">
+      <label class="mdl-textfield__label" for="key">Idnetity No </label>
+    </div>
+  </div>
+</div>
+
+
+<div class="mdl-grid ">
+  <div class="mdl-cell mdl-cell--8-col">
+
+    <button align="left" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" routerLink="/view/{{this.uid}}">
+      Search
+    </button>
+  </div>
+</div>
